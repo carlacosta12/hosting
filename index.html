@@ -1,9 +1,108 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title> Web <title>
-</head>
+  <head>
+    <meta charset="utf-8">
+   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+ 
+    <title>My test page</title>
+  </head>
+  <body>
+    <h1 ><font size="6" color="180080">MOZILLA IS COOL</font></h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Mozilla_Firefox_logo_2013.svg/768px-Mozilla_Firefox_logo_2013.svg.png" alt="The Firefox logo: a flaming fox surrounding the Earth."width="200" height="200">
 
-<body>
-<h1> Web<h1>
+    <p>At Mozilla, we’re a global community of</p>
+
+    <ul>
+      <li>technologists</li>
+      <li>thinkers</li>
+      <li>builders</li>
+    </ul>
+  
+  <p>working together to keep the Internet alive and accesible so people worldwide can be informed contributors and creators of the Web. We believe this act of human collaboration across an open platform is essential to individual growth and our colletive future.</p>
+  
+  <p>Read the <a href="https://www.mozilla.org/en-US/about/ma*"> Mozilla Manifesto </a> to learn even more about the values and principles that guide the pursuit of our mission.
+    </p> 
+    <button>Change user </button>
+    <script src="scripts/main.js"></script>
+
 </body>
 </html>
+
+html {
+  font-size:10px
+  font-family:'Open Sans', sans-serif;
+}
+
+hl{
+  font-size:60px;
+  text-align:center;
+}
+
+p, li{
+  font-size: 16px;
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+html{
+  background-color: #00539F
+}
+
+body{
+  width: 600px;
+  margin: 0 auto;
+  background-color: #FF9500;
+  padding: 0 20px 20px 20px;
+  border: 5px solid black;
+}
+
+hl{
+  margin: 0;
+  padding: 20px 0;
+  color: #00539F;
+  text-shadow: 3px 3px 1px black;
+}
+
+img{
+  display: block;
+  margin: 0 auto;
+}
+
+// Image switcher code
+
+let myImage = document.querySelector("img");
+
+myImage.onclick = function(){
+  let mySrc = myImage.getAttribute ("src");
+  if (mySrc === "images/firefox-icon.png"){
+    myImage.setAttribute ("src", "images/firefox2.png");
+    } else {
+      myImage.setAttribute ("src", "images/firefox-icon.png");
+      }
+}
+
+//Personalized welcome message code
+
+let myButton = document.querySelector ("button");
+let myHeading = document.querySelector ("h1");
+
+function setUserName () {
+  let myName = prompt ("Please enter your name.");
+  if (!myName || myName === null) {
+    setUserName ();
+  } else {
+    localStorage. setItem("name", myName);
+    myHeading.innerHTML = "Mozilla is cool," + myName;
+  }
+}
+
+if (!localStorage.getItem ("name")) {
+  setUserName ();
+} else {
+  let storedName = localStorage.getItem ("name");
+  myHeading.innerHTML = "Mozilla is cool, " + storedName;
+}
+
+myButton.onclick = function () {
+  setUserName ();
+}
